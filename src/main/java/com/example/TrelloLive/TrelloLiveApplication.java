@@ -8,7 +8,6 @@ public class TrelloLiveApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(TrelloLiveApplication.class, args);
-
 	}
 
 }
