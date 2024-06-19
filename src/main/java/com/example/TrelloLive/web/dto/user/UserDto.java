@@ -8,17 +8,21 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.UUID;
+
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class UserDto {
-    @NotNull(message = "Name cannot be null")
+    private UUID userId;
+    @NotNull(message = "name cannot be null")
     @Pattern(
             regexp = "^[A-ZА-Я][a-zA-Zа-яА-Я]*$",
-            message = "Name должно содержать имя с заглавной буквы"
+            message = "name должно содержать имя с заглавной буквы"
     )
     private String name;
+    @NotNull(message = "email cannot be null")
     private String email;
     @NotNull(message = "password cannot be null")
     private String password;

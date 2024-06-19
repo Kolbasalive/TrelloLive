@@ -1,17 +1,13 @@
 package com.example.TrelloLive.web.dto.task;
 
 import com.example.TrelloLive.data.model.Task;
+import com.example.TrelloLive.web.dto.board.TaskForBoardDto;
 
 public interface TaskDtoMapper {
 
     Task toTask(TaskDto taskDto);
-    GetTaskDto toGetTaskDto(Task task);
 
-/*    GetTaskDto toGetTaskDto(Task task);*/
+    ResponseTaskDto toGetTaskDto(Task task);
 
-
-    //Tag mapToTagDto(TagDto source);
-
-
-//    User mapToUserDto(UserDto source);
+    TaskForBoardDto toTaskForBoardDto(Task task);
 }

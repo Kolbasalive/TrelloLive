@@ -1,25 +1,31 @@
 package com.example.TrelloLive.data.model;
 
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.Accessors;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-@Table(name = "Tag")
 @Entity
+@Table(name = "board")
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
 @Accessors(chain = true)
-public class Tag{
+public class Board{
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID tagId;
+    private UUID boardId;
+
     @Column(name = "name", nullable = false)
     private String name;
-    @ManyToMany(mappedBy = "tags")
-    private List<Task> tasks;
+
+    @OneToMany(mappedBy = "board")
+    private List<Task> tasks = new ArrayList<>();
 }

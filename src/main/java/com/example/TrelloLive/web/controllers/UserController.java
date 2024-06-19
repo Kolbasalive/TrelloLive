@@ -1,34 +1,38 @@
-package com.example.TrelloLive.web;
+package com.example.TrelloLive.web.controllers;
 
-import com.example.TrelloLive.data.model.Users;
-import com.example.TrelloLive.web.dto.ResponseDto;
-import com.example.TrelloLive.web.dto.user.GetUserDto;
-import com.example.TrelloLive.web.dto.user.UserDto;
 import com.example.TrelloLive.service.UserService;
+import com.example.TrelloLive.web.dto.ResponseDto;
+import com.example.TrelloLive.web.dto.user.ResponseUserDto;
+import com.example.TrelloLive.web.dto.user.UserDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.UUID;
 
 @RestController
-@RequestMapping("/trello/user")
+@RequestMapping("trello/user")
 @RequiredArgsConstructor
 public class UserController {
     private final UserService userService;
 
     @PostMapping("/post")
-    public ResponseDto postUser(@RequestBody UserDto userDto){
+    public ResponseDto postUser(@RequestBody UserDto userDto) {
         return new ResponseDto(userService.createUser(userDto).getName());
     }
 
     @GetMapping("/get")
-    public List<GetUserDto> getUsers(){
+    public List<ResponseUserDto> getUsers() {
         return userService.getUsers();
     }
 
     @GetMapping("/get/{userId}")
-    public GetUserDto getUserById(@PathVariable String userId){
+    public ResponseUserDto getUserById(@PathVariable String userId) {
         return userService.getUserById(userId);
     }
+
+    @DeleteMapping("/{userId}")
+    public ResponseDto deleteUsers(@PathVariable String userId) {
+        return new ResponseDto(userService.deleteUsers(userId).getUserId().toString());
+    }
+
 }

@@ -1,4 +1,4 @@
-package com.example.TrelloLive.web.dto.task;
+package com.example.TrelloLive.web.dto.user;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,13 +7,12 @@ import lombok.NoArgsConstructor;
 import java.util.UUID;
 
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
-public class UserForTaskDto {
-    private UUID userId;
+@NoArgsConstructor
+public class ResponseUserDto {
+    private UUID id;
     private String name;
     private String email;
     private String password;
     private String role;
 }
-

@@ -2,6 +2,7 @@ package com.example.TrelloLive.data.model;
 
 import jakarta.persistence.*;
 import lombok.*;
+import lombok.experimental.Accessors;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,17 +12,23 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Data
+@Getter
+@Setter
 @ToString
-public class Users {
+@Accessors(chain = true)
+public class Users{
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID userId;
+    @Column(name = "name", nullable = false)
     private String name;
+    @Column(name = "email", nullable = false)
     private String email;
+    @Column(name = "password", nullable = false)
     private String password;
     @Enumerated(EnumType.STRING)
     private Role role;
     @ManyToMany(mappedBy = "assignees")
     private List<Task> taskList = new ArrayList<>();
+
 }
