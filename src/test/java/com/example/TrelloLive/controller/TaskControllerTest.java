@@ -1,23 +1,21 @@
-package com.example.TrelloLive;
+package com.example.TrelloLive.controller;
 
-import com.example.TrelloLive.service.TaskService;
+import com.example.TrelloLive.service.Impl.TaskServiceImpl;
 import com.example.TrelloLive.web.controllers.TaskController;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.MockMvcBuilder;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 @ExtendWith(MockitoExtension.class)
 public class TaskControllerTest {
 
     @Mock
-    private TaskService taskService;
+    private TaskServiceImpl taskService;
 
     @InjectMocks
     private TaskController taskController;
@@ -25,7 +23,7 @@ public class TaskControllerTest {
     private MockMvc mockMvc;
 
     @BeforeEach
-    public void setUp() {
+    void setUp() {
         mockMvc = MockMvcBuilders.standaloneSetup(taskController).build();
     }
 

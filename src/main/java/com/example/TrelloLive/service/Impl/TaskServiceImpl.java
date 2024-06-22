@@ -103,7 +103,6 @@ public class TaskServiceImpl implements TaskService {
 
             return taskRepository.save(task);
         }
-        logger.info("Tag add in task: " + task.getTags().getLast().getTagId().toString());
 
         return null;
     }
@@ -148,7 +147,7 @@ public class TaskServiceImpl implements TaskService {
         return task;
     }
 
-    private String generateTLId() {
+    public String generateTLId() {
         return format(TASK_TL_ID_PREFIX, taskRepository.count());
     }
 }

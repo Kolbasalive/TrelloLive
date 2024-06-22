@@ -26,6 +26,7 @@ public class TagServiceImpl implements TagService {
     public ResponseTagDto getTagById(String tagId) {
         Tag tag = tagRepository.findById(UUID.fromString(tagId))
                 .orElseThrow(() -> new TagNotFoundException(tagId));
+
         return tagDtoMapper.toResponseTagDto(tag);
     }
 
@@ -39,6 +40,7 @@ public class TagServiceImpl implements TagService {
     public Tag createTag(TagDto tagDto) {
         Tag tag = tagDtoMapper.toTagFromTagDto(tagDto);
         logger.info("Tag create, tagName: " + tag.getName());
+
         return tagRepository.save(tag);
     }
 
@@ -49,9 +51,8 @@ public class TagServiceImpl implements TagService {
         if (tag.getTasks() == null) {
             tagRepository.delete(tag);
             logger.info("Tag delete, tagId: " + tag.getTagId());
-        } else {
-            logger.info("The tag is used in the task");
         }
+
         return tag;
     }
 }
