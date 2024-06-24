@@ -20,7 +20,7 @@ public class ResponseTaskDto {
     private String status;
     private String priority;
     private LocalDateTime deadline;
-    private String sprint;//
+    private String sprint;
     private String tlId;
     private List<TagForTaskDto> tags;
     private List<UserForTaskDto> assignees;
